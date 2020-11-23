@@ -74,7 +74,8 @@ class HtmlWidget extends StatefulWidget {
   /// - `unsupportedWebViewWorkaroundForIssue37`
   /// - `webView`
   /// - `webViewJs`
-  RebuildTriggers get rebuildTriggers => RebuildTriggers([
+  RebuildTriggers get rebuildTriggers =>
+      RebuildTriggers([
         html,
         baseUrl,
         buildAsync,
@@ -87,11 +88,12 @@ class HtmlWidget extends StatefulWidget {
   /// The default styling for text elements.
   final TextStyle textStyle;
 
+  final TextAlign textAlign;
+
   /// Creates a widget that builds Flutter widget tree from html.
   ///
   /// The [html] argument must not be null.
-  HtmlWidget(
-    this.html, {
+  HtmlWidget(this.html, {
     this.baseUrl,
     this.buildAsync,
     this.buildAsyncBuilder,
@@ -104,7 +106,9 @@ class HtmlWidget extends StatefulWidget {
     this.onTapUrl,
     RebuildTriggers rebuildTriggers,
     this.textStyle = const TextStyle(),
-  })  : assert(html != null),
+    this.textAlign,
+  })
+      : assert(html != null),
         _rebuildTriggers = rebuildTriggers,
         super(key: key);
 
@@ -224,7 +228,7 @@ class _RootTsb extends TextStyleBuilder {
     return _output = TextStyleHtml.root(
       state._wf.getDependencies(state.context),
       state.widget.textStyle,
-    );
+    ).copyWith(textAlign: textAlign);
   }
 
   void reset() => _output = null;
@@ -234,11 +238,11 @@ Widget _buildAsyncBuilder(BuildContext _, AsyncSnapshot<Widget> snapshot) =>
     snapshot.hasData
         ? snapshot.data
         : const Center(
-            child: Padding(
-              child: Text('Loading...'),
-              padding: EdgeInsets.all(8),
-            ),
-          );
+      child: Padding(
+        child: Text('Loading...'),
+        padding: EdgeInsets.all(8),
+      ),
+    );
 
 Widget _buildBody(_HtmlWidgetState state, dom.NodeList domNodes) {
   final rootMeta = state._rootMeta;
@@ -251,12 +255,17 @@ Widget _buildBody(_HtmlWidgetState state, dom.NodeList domNodes) {
     parentMeta: rootMeta,
     tsb: rootMeta.tsb(),
     wf: wf,
-  )..addBitsFromNodes(domNodes);
+  )
+    ..addBitsFromNodes(domNodes);
   return wf.buildBody(rootMeta, tree.build()) ?? widget0;
 }
 
-dom.NodeList _parseHtml(String html) => parser.HtmlParser(
+dom.NodeList _parseHtml(String html) =>
+    parser
+        .HtmlParser(
       html,
       generateSpans: false,
       parseMeta: false,
-    ).parseFragment().nodes;
+    )
+        .parseFragment()
+        .nodes;
