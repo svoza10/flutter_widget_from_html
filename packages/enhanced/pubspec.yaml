@@ -15,7 +15,12 @@ dependencies:
     sdk: flutter
   flutter_layout_grid: ^0.10.2
   flutter_svg: ">=0.17.0 <0.20.0"
-  flutter_widget_from_html_core: ^0.5.1+4
+  #https://pub.dev/packages/flutter_widget_from_html
+  flutter_widget_from_html_core:
+    git:
+      url: git://github.com/svoza10/flutter_widget_from_html.git
+      ref: master
+      path: packages/core
   html: ^0.14.0+3
   url_launcher: ^5.5.0
   video_player: ">=0.10.12 <2.0.0"
