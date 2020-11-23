@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_widget_from_html_core/flutter_widget_from_html_core.dart'
-as core show HtmlWidget, RebuildTriggers;
+    as core show HtmlWidget, RebuildTriggers;
 
 import 'helpers.dart';
 import 'widget_factory.dart';
@@ -44,7 +44,8 @@ class HtmlWidget extends core.HtmlWidget {
   /// Creates a widget that builds Flutter widget tree from html.
   ///
   /// The [html] argument must not be null.
-  HtmlWidget(String html, {
+  HtmlWidget(
+    String html, {
     bool buildAsync,
     AsyncWidgetBuilder<Widget> buildAsyncBuilder,
     bool enableCaching = true,
@@ -61,29 +62,28 @@ class HtmlWidget extends core.HtmlWidget {
     this.unsupportedWebViewWorkaroundForIssue37 = false,
     this.webView = false,
     this.webViewJs = true,
-  })
-      : assert(html != null),
+  })  : assert(html != null),
         super(
-        html,
-        baseUrl: baseUrl,
-        buildAsync: buildAsync,
-        buildAsyncBuilder: buildAsyncBuilder ?? _buildAsyncBuilder,
-        customStylesBuilder: customStylesBuilder,
-        customWidgetBuilder: customWidgetBuilder,
-        enableCaching: enableCaching,
-        factoryBuilder: factoryBuilder ?? _getEnhancedWf,
-        hyperlinkColor: hyperlinkColor,
-        onTapUrl: onTapUrl,
-        rebuildTriggers: core.RebuildTriggers([
-          unsupportedWebViewWorkaroundForIssue37,
-          webView,
-          webViewJs,
-          if (rebuildTriggers != null) rebuildTriggers,
-        ]),
-        textStyle: textStyle,
-        textAlign textAlign,
-        key: key,
-      );
+          html,
+          baseUrl: baseUrl,
+          buildAsync: buildAsync,
+          buildAsyncBuilder: buildAsyncBuilder ?? _buildAsyncBuilder,
+          customStylesBuilder: customStylesBuilder,
+          customWidgetBuilder: customWidgetBuilder,
+          enableCaching: enableCaching,
+          factoryBuilder: factoryBuilder ?? _getEnhancedWf,
+          hyperlinkColor: hyperlinkColor,
+          onTapUrl: onTapUrl,
+          rebuildTriggers: core.RebuildTriggers([
+            unsupportedWebViewWorkaroundForIssue37,
+            webView,
+            webViewJs,
+            if (rebuildTriggers != null) rebuildTriggers,
+          ]),
+          textStyle: textStyle,
+          textAlign: textAlign,
+          key: key,
+        );
 
   static WidgetFactory _getEnhancedWf() => WidgetFactory();
 }
@@ -92,8 +92,8 @@ Widget _buildAsyncBuilder(BuildContext _, AsyncSnapshot<Widget> snapshot) =>
     snapshot.hasData
         ? snapshot.data
         : const Center(
-      child: Padding(
-        child: CircularProgressIndicator(),
-        padding: EdgeInsets.all(8),
-      ),
-    );
+            child: Padding(
+              child: CircularProgressIndicator(),
+              padding: EdgeInsets.all(8),
+            ),
+          );
