@@ -1,10 +1,16 @@
-import 'package:flutter/widgets.dart';
+import 'dart:io';
+
+import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:network_image_mock/network_image_mock.dart';
+import 'package:flutter_widget_from_html_core/flutter_widget_from_html_core.dart';
+import 'package:golden_toolkit/golden_toolkit.dart';
+import 'package:mocktail_image_network/mocktail_image_network.dart';
 
 import '_.dart';
 
-void main() {
+void main() async {
+  await loadAppFonts();
+
   final imgSizingConstraints = 'height≥0.0,height=auto,width≥0.0,width=auto';
 
   testWidgets('renders empty string', (WidgetTester tester) async {
@@ -130,7 +136,7 @@ void main() {
     testWidgets('renders new line before IMG', (tester) async {
       final src = 'http://domain.com/image.png';
       final html = '1<br /><img src="$src" />';
-      final explained = await mockNetworkImagesFor(() => explain(tester, html));
+      final explained = await mockNetworkImages(() => explain(tester, html));
       expect(
           explained,
           equals('[RichText:(:'
@@ -203,7 +209,7 @@ void main() {
       expect(
           explained,
           equals('TshWidget\n'
-              '└ColumnPlaceholder(BuildMetadata(root))\n'
+              '└ColumnPlaceholder(BuildMetadata(<root></root>))\n'
               ' └Column()\n'
               '  ├WidgetPlaceholder<BuildTree>(BuildTree#0 tsb#1(parent=#2):\n'
               '  ││  "1"\n'
@@ -297,7 +303,7 @@ void main() {
 
     testWidgets(
       'renders FIGURE/FIGCAPTION tags',
-      (tester) => mockNetworkImagesFor(() async {
+      (tester) => mockNetworkImages(() async {
         final src = 'http://domain.com/image.png';
         final html = '''
 <figure>
@@ -396,12 +402,16 @@ void main() {
   });
 
   group('code', () {
+    final php = '<span style="color: #000000">'
+        '<span style="color: #0000BB">&lt;?php\n'
+        'phpinfo</span>'
+        '<span style="color: #007700">();\n'
+        '</span>'
+        '<span style="color: #0000BB">?&gt;</span>'
+        '</span>';
+
     testWidgets('renders CODE tag', (WidgetTester tester) async {
-      final html = '<code><span style="color: #000000">'
-          '<span style="color: #0000BB">&lt;?php phpinfo</span>'
-          '<span style="color: #007700">(); </span>'
-          '<span style="color: #0000BB">?&gt;</span>'
-          '</span></code>';
+      final html = '<code>$php</code>';
       final explained = await explain(tester, html);
       expect(
           explained,
@@ -425,16 +435,17 @@ void main() {
     });
 
     testWidgets('renders PRE tag', (WidgetTester tester) async {
-      final html = """<pre>&lt;?php
-highlight_string('&lt;?php phpinfo(); ?&gt;');
-?&gt;</pre>""";
+      final html = '<pre>$php</pre>';
       final explained = await explain(tester, html);
       expect(
           explained,
           equals('[CssBlock:child=[SingleChildScrollView:child=[RichText:'
-              '(+font=Courier+fonts=monospace:<?php\nhighlight_string(\''
-              '<?php phpinfo(); ?>\');\n?>)]'
-              ']]'));
+              '(+font=Courier+fonts=monospace:'
+              '(#FF0000BB:<?php\nphpinfo)'
+              '(#FF007700:();\n)'
+              '(#FF0000BB:?>)'
+              ')'
+              ']]]'));
     });
 
     testWidgets('renders SAMP tag', (WidgetTester tester) async {
@@ -592,71 +603,6 @@ highlight_string('&lt;?php phpinfo(); ?&gt;');
     });
   });
 
-  group('border', () {
-    testWidgets('renders border-top', (WidgetTester tester) async {
-      final html = '<span style="border-top: 1px">Foo</span>';
-      final explained = await explain(tester, html);
-      expect(explained, equals('[RichText:(+o:Foo)]'));
-    });
-
-    testWidgets('resets border-top', (WidgetTester tester) async {
-      final html = '<span style="text-decoration: overline">F'
-          '<span style="border-top: 0">o</span>o</span>';
-      final explained = await explain(tester, html);
-      expect(explained, equals('[RichText:(:(+o:F)(:o)(+o:o))]'));
-    });
-
-    testWidgets('renders border-bottom', (WidgetTester tester) async {
-      final html = '<span style="border-bottom: 1px">Foo</span>';
-      final explained = await explain(tester, html);
-      expect(explained, equals('[RichText:(+u:Foo)]'));
-    });
-
-    testWidgets('resets border-bottom', (WidgetTester tester) async {
-      final html = '<u>F<span style="border-bottom: 0">o</span>o</u>';
-      final explained = await explain(tester, html);
-      expect(explained, equals('[RichText:(:(+u:F)(:o)(+u:o))]'));
-    });
-
-    testWidgets('renders dashed', (WidgetTester tester) async {
-      final html = '<span style="border-top: 1px dashed">Foo</span>';
-      final explained = await explain(tester, html);
-      expect(explained, equals('[RichText:(+o/dashed:Foo)]'));
-    });
-
-    testWidgets('renders dotted', (WidgetTester tester) async {
-      final html = '<span style="border-top: 1px dotted">Foo</span>';
-      final explained = await explain(tester, html);
-      expect(explained, equals('[RichText:(+o/dotted:Foo)]'));
-    });
-
-    testWidgets('renders double', (WidgetTester tester) async {
-      final html = '<span style="border-bottom: 1px double">Foo</span>';
-      final explained = await explain(tester, html);
-      expect(explained, equals('[RichText:(+u/double:Foo)]'));
-    });
-
-    testWidgets('renders solid', (WidgetTester tester) async {
-      final html = '<span style="border-bottom: 1px solid">Foo</span>';
-      final explained = await explain(tester, html);
-      expect(explained, equals('[RichText:(+u:Foo)]'));
-    });
-
-    group('isBlockElement', () {
-      testWidgets('skips border-top', (WidgetTester tester) async {
-        final html = '<div style="border-top: 1px">Foo</div>';
-        final explained = await explain(tester, html);
-        expect(explained, equals('[CssBlock:child=[RichText:(:Foo)]]'));
-      });
-
-      testWidgets('skips border-bottom', (WidgetTester tester) async {
-        final html = '<div style="border-bottom: 1px">Foo</div>';
-        final explained = await explain(tester, html);
-        expect(explained, equals('[CssBlock:child=[RichText:(:Foo)]]'));
-      });
-    });
-  });
-
   group('color (inline style)', () {
     testWidgets('renders hex values', (WidgetTester tester) async {
       final html = '<span style="color: #F00">red</span>'
@@ -755,17 +701,10 @@ highlight_string('&lt;?php phpinfo(); ?&gt;');
 
       testWidgets('renders invalids', (WidgetTester tester) async {
         final htmls = [
-          '<span style="color: hsl(xxx, 0, 0)">Foo</span>',
-          '<span style="color: hsl(0, -1%, 0)">Foo</span>',
-          '<span style="color: hsl(0, 1000%, 0)">Foo</span>',
-          '<span style="color: hsl(0, xxx, 0)">Foo</span>',
-          '<span style="color: hsl(0, 0, -1%)">Foo</span>',
-          '<span style="color: hsl(0, 0, 1000%)">Foo</span>',
-          '<span style="color: hsl(0, 0, xxx)">Foo</span>',
-          '<span style="color: hsla(0, 0, 0, -1)">Foo</span>',
-          '<span style="color: hsla(0, 0, 0, 9)">Foo</span>',
-          '<span style="color: hsla(0, 0, 0, 1000%)">Foo</span>',
-          '<span style="color: hsla(0, 0, 0, x)">Foo</span>',
+          '<span style="color: hsl(xxx, 0%, 0%)">Foo</span>',
+          '<span style="color: hsl(0, xxx, 0%)">Foo</span>',
+          '<span style="color: hsl(0, 0%, xxx)">Foo</span>',
+          '<span style="color: hsla(0, 0%, 0%, x)">Foo</span>',
         ];
         for (final html in htmls) {
           final explained = await explain(tester, html);
@@ -801,8 +740,20 @@ highlight_string('&lt;?php phpinfo(); ?&gt;');
         expect(explained, equals('[RichText:(#FFFF0000:Foo)]'));
       });
 
+      testWidgets('renders rgb red overflow', (WidgetTester tester) async {
+        final html = '<span style="color: rgb(1000, 0, 0)">Foo</span>';
+        final explained = await explain(tester, html);
+        expect(explained, equals('[RichText:(#FFFF0000:Foo)]'));
+      });
+
       testWidgets('renders rgb green', (WidgetTester tester) async {
         final html = '<span style="color: rgb(0, 255, 0)">Foo</span>';
+        final explained = await explain(tester, html);
+        expect(explained, equals('[RichText:(#FF00FF00:Foo)]'));
+      });
+
+      testWidgets('renders rgb green overflow', (WidgetTester tester) async {
+        final html = '<span style="color: rgb(0, 1000, 0)">Foo</span>';
         final explained = await explain(tester, html);
         expect(explained, equals('[RichText:(#FF00FF00:Foo)]'));
       });
@@ -813,10 +764,22 @@ highlight_string('&lt;?php phpinfo(); ?&gt;');
         expect(explained, equals('[RichText:(#FF0000FF:Foo)]'));
       });
 
+      testWidgets('renders rgb blue overflow', (WidgetTester tester) async {
+        final html = '<span style="color: rgb(0, 0, 255)">Foo</span>';
+        final explained = await explain(tester, html);
+        expect(explained, equals('[RichText:(#FF0000FF:Foo)]'));
+      });
+
       testWidgets('renders rgba alpha', (WidgetTester tester) async {
         final html = '<span style="color: rgba(0, 0, 0, 0.5)">Foo</span>';
         final explained = await explain(tester, html);
         expect(explained, equals('[RichText:(#80000000:Foo)]'));
+      });
+
+      testWidgets('renders rgba alpha negative', (WidgetTester tester) async {
+        final html = '<span style="color: rgba(0, 0, 0, -1)">Foo</span>';
+        final explained = await explain(tester, html);
+        expect(explained, equals('[RichText:(#00000000:Foo)]'));
       });
 
       testWidgets('renders rgb red in percentage', (tester) async {
@@ -851,21 +814,11 @@ highlight_string('&lt;?php phpinfo(); ?&gt;');
 
       testWidgets('renders invalids', (WidgetTester tester) async {
         final htmls = [
-          '<span style="color: rgb(-1, 0, 0)">Foo</span>',
-          '<span style="color: rgb(999, 0, 0)">Foo</span>',
-          '<span style="color: rgb(1000%, 0, 0)">Foo</span>',
+          '<span style="color: rgb(255)">Foo</span>',
+          '<span style="color: rgb(255, 255)">Foo</span>',
           '<span style="color: rgb(xxx, 0, 0)">Foo</span>',
-          '<span style="color: rgb(0, -1, 0)">Foo</span>',
-          '<span style="color: rgb(0, 999, 0)">Foo</span>',
-          '<span style="color: rgb(0, 1000%, 0)">Foo</span>',
           '<span style="color: rgb(0, xxx, 0)">Foo</span>',
-          '<span style="color: rgb(0, 0, -1)">Foo</span>',
-          '<span style="color: rgb(0, 0, 999)">Foo</span>',
-          '<span style="color: rgb(0, 0, 1000%)">Foo</span>',
           '<span style="color: rgb(0, 0, xxx)">Foo</span>',
-          '<span style="color: rgba(0, 0, 0, -1)">Foo</span>',
-          '<span style="color: rgba(0, 0, 0, 9)">Foo</span>',
-          '<span style="color: rgba(0, 0, 0, 1000%)">Foo</span>',
           '<span style="color: rgba(0, 0, 0, x)">Foo</span>',
         ];
         for (final html in htmls) {
@@ -936,7 +889,7 @@ highlight_string('&lt;?php phpinfo(); ?&gt;');
 
       testWidgets(
         'renders IMG inline by default',
-        (tester) => mockNetworkImagesFor(() async {
+        (tester) => mockNetworkImages(() async {
           final html = 'Foo <img src="$src" />';
           final explained = await explain(tester, html);
           expect(
@@ -950,7 +903,7 @@ highlight_string('&lt;?php phpinfo(); ?&gt;');
 
       testWidgets(
         'renders IMG as block',
-        (tester) => mockNetworkImagesFor(() async {
+        (tester) => mockNetworkImages(() async {
           final html = 'Foo <img src="$src" style="display: block" />';
           final explained = await explain(tester, html);
           expect(
@@ -964,7 +917,7 @@ highlight_string('&lt;?php phpinfo(); ?&gt;');
 
       testWidgets(
         'renders IMG with dimensions inline',
-        (tester) => mockNetworkImagesFor(() async {
+        (tester) => mockNetworkImages(() async {
           final html = '<img src="$src" width="1" height="1" />';
           final explained = await explain(tester, html);
           expect(
@@ -979,7 +932,7 @@ highlight_string('&lt;?php phpinfo(); ?&gt;');
 
       testWidgets(
         'renders IMG with dimensions as block',
-        (tester) => mockNetworkImagesFor(() async {
+        (tester) => mockNetworkImages(() async {
           final html = '<img src="$src" width="1" '
               'height="1" style="display: block" />';
           final explained = await explain(tester, html);
@@ -1228,7 +1181,7 @@ highlight_string('&lt;?php phpinfo(); ?&gt;');
       final explain2x = (WidgetTester tester, String html) async {
         tester.binding.window.textScaleFactorTestValue = 2;
         final explained = await explain(tester, html);
-        tester.binding.window.textScaleFactorTestValue = null;
+        tester.binding.window.clearTextScaleFactorTestValue();
         return explained;
       };
 
@@ -1555,4 +1508,192 @@ foo <span style="text-decoration: none">bar</span></span></span></span>
       });
     });
   });
+
+  group('white-space', () {
+    testWidgets('renders normal', (tester) async {
+      final html = '<div style="white-space: normal">Foo\nbar</div>';
+      final explained = await explain(tester, html);
+      expect(explained, equals('[CssBlock:child=[RichText:(:Foo bar)]]'));
+    });
+
+    testWidgets('renders pre', (tester) async {
+      final html = '<div style="white-space: pre">Foo\nbar</div>';
+      final explained = await explain(tester, html);
+      expect(explained, equals('[CssBlock:child=[RichText:(:Foo\nbar)]]'));
+    });
+
+    group('PRE tag', () {
+      testWidgets('renders without inline styling', (tester) async {
+        final html = '<pre>Foo\nbar</pre>';
+        final explained = await explain(tester, html);
+        expect(
+            explained,
+            equals('[CssBlock:child=[SingleChildScrollView:child='
+                '[RichText:(+font=Courier+fonts=monospace:Foo\nbar)]]]'));
+      });
+
+      testWidgets('renders normal', (tester) async {
+        final html = '<pre style="white-space: normal">Foo\nbar</pre>';
+        final explained = await explain(tester, html);
+        expect(
+            explained,
+            equals('[CssBlock:child=[SingleChildScrollView:child='
+                '[RichText:(+font=Courier+fonts=monospace:Foo bar)]]]'));
+      });
+    });
+  });
+
+  group('DefaultTextStyle with null properties (#460)', () {
+    testWidgets('renders textScaleFactor > 1 (control group)', (tester) async {
+      tester.binding.window.textScaleFactorTestValue = 2;
+
+      final explained = await explain(
+        tester,
+        null,
+        hw: HtmlWidget('Foo', key: hwKey),
+      );
+      expect(explained, equals('[RichText:(@20.0:Foo)]'));
+
+      tester.binding.window.textScaleFactorTestValue = 1;
+    });
+
+    testWidgets('renders textScaleFactor > 1', (tester) async {
+      tester.binding.window.textScaleFactorTestValue = 2;
+
+      final explained = await explain(
+        tester,
+        null,
+        hw: DefaultTextStyle(
+          style: TextStyle(),
+          child: HtmlWidget('Foo', key: hwKey),
+        ),
+      );
+      expect(explained, equals('[RichText:(:Foo)]'));
+
+      tester.binding.window.textScaleFactorTestValue = 1;
+    });
+
+    testWidgets('renders H1 (control group)', (tester) async {
+      final e = await explain(
+        tester,
+        null,
+        hw: HtmlWidget('<h1>Header</h1>', key: hwKey),
+      );
+      expect(e, equals('[CssBlock:child=[RichText:(@20.0+b:Header)]]'));
+    });
+
+    testWidgets('renders H1', (tester) async {
+      final explained = await explain(
+        tester,
+        null,
+        hw: DefaultTextStyle(
+          style: TextStyle(),
+          child: HtmlWidget('<h1>Header</h1>', key: hwKey),
+        ),
+      );
+      expect(explained, equals('[CssBlock:child=[RichText:(+b:Header)]]'));
+    });
+
+    testWidgets('renders SUP (control group)', (tester) async {
+      final explained = await explain(
+        tester,
+        null,
+        hw: HtmlWidget('<sup>Foo</sup>', key: hwKey),
+      );
+      expect(
+          explained,
+          equals('[RichText:[Stack:children='
+              '[Padding:(3,0,0,0),child=[Opacity:child=[RichText:(@8.3:Foo)]]],'
+              '[Positioned:(0.0,null,null,null),child=[RichText:(@8.3:Foo)]]'
+              ']@bottom]'));
+    });
+
+    testWidgets('renders SUP', (tester) async {
+      final explained = await explain(
+        tester,
+        null,
+        hw: DefaultTextStyle(
+          style: TextStyle(),
+          child: HtmlWidget('<sup>Foo</sup>', key: hwKey),
+        ),
+      );
+      expect(explained, equals('[RichText:[RichText:(:Foo)]@bottom]'));
+    });
+
+    testWidgets('renders line-height (control group)', (tester) async {
+      final explained = await explain(
+        tester,
+        null,
+        hw: HtmlWidget(
+          '<span style="line-height: 20px">Foo</span>',
+          key: hwKey,
+        ),
+      );
+      expect(explained, equals('[RichText:(+height=2.0:Foo)]'));
+    });
+
+    testWidgets('renders line-height', (tester) async {
+      final explained = await explain(
+        tester,
+        null,
+        hw: DefaultTextStyle(
+          style: TextStyle(),
+          child: HtmlWidget(
+            '<span style="line-height: 20px">Foo</span>',
+            key: hwKey,
+          ),
+        ),
+      );
+      expect(explained, equals('[RichText:(:Foo)]'));
+    });
+
+    final goldenSkip = Platform.isLinux ? null : 'Linux only';
+    GoldenToolkit.runWithConfiguration(
+      () {
+        final html = 'Foo <ul><li>One</li><li>Two</li></ul> '
+            'Bar <ol><li>One</li><li>Two</li></ol>';
+
+        testGoldens('renders LI (control group)', (tester) async {
+          await tester.pumpWidgetBuilder(
+            _Issue460(HtmlWidget(html)),
+            wrapper: materialAppWrapper(theme: ThemeData.light()),
+            surfaceSize: Size(200, 200),
+          );
+
+          await screenMatchesGolden(tester, 'control_group');
+        }, skip: goldenSkip != null);
+
+        testGoldens('renders LI', (tester) async {
+          await tester.pumpWidgetBuilder(
+            _Issue460(DefaultTextStyle(
+              style: TextStyle(),
+              child: HtmlWidget(html, key: hwKey),
+            )),
+            wrapper: materialAppWrapper(theme: ThemeData.light()),
+            surfaceSize: Size(200, 200),
+          );
+
+          await screenMatchesGolden(tester, 'default_text_style');
+        }, skip: goldenSkip != null);
+      },
+      config: GoldenToolkitConfiguration(
+        fileNameFactory: (name) => '$kGoldenFilePrefix/li/issue460/$name.png',
+      ),
+    );
+  });
+}
+
+class _Issue460 extends StatelessWidget {
+  final Widget child;
+
+  const _Issue460(this.child, {Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext _) => Scaffold(
+        body: Container(
+          color: const Color.fromRGBO(255, 0, 0, 1),
+          padding: const EdgeInsets.all(8.0),
+          child: child,
+        ),
+      );
 }

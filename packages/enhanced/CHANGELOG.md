@@ -1,3 +1,38 @@
+## 0.6.0
+
+- Flutter 2 with null safety 🚀
+- Implement new packages:
+  - `fwfh_webview` (#448)
+  - `fwfh_url_launcher` (#450)
+  - `fwfh_svg` (#452)
+  - `fwfh_chewie` (#461)
+  - `fwfh_cached_network_image` (#463)
+- Use csslib to parse inline style (#379)
+- Implement `computeDryLayout` (#411)
+- Dispose recognizer properly (#466)
+- Add Flutter Web support for `webViewMediaPlaybackAlwaysAllow` (#468)
+
+## 0.5.2+1
+
+- [CanvasKit] Add workaround for unimplemented `computeLineMetrics` (#441)
+
+## 0.5.2
+
+- Add support for TABLE attribute `cellpadding` (#365)
+- Add support for table cell attributes `valign` (#365)
+- Add WebView related params (#388, #431)
+  - `unsupportedWebViewWorkaroundForIssue375`
+  - `webViewDebuggingEnabled`
+  - `webViewMediaPlaybackAlwaysAllow`
+  - `webViewUserAgent`
+- Add support for `HtmlWidget.onTapImage` callback (#398)
+- Add support for sandbox="allow-scripts" (#420)
+- Add support for file:// images (#432)
+- Allow getting parsed inline styles from `dom.Element` directly (#367)
+- Improve support for inline styles border, border-collapse and box-sizing  (#365)
+- Fix line metrics are unavailable on Flutter web (#383)
+- Fix IMG tag with dimensions being stretched (#429)
+
 ## 0.5.1+5
 
 - Add support for chewie 0.12 (#373, authored by @urakozz)
