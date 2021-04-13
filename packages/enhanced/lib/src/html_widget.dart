@@ -51,7 +51,7 @@ class HtmlWidget extends core.HtmlWidget {
     void Function(String)? onTapUrl,
     core.RebuildTriggers? rebuildTriggers,
     TextStyle textStyle = const TextStyle(),
-    TextAlign textAlign,
+    TextAlign textAlign = TextAlign.left,
     this.webView = false,
     this.webViewDebuggingEnabled = false,
     this.webViewJs = true,
