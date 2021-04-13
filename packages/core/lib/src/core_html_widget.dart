@@ -238,7 +238,7 @@ class _RootTsb extends TextStyleBuilder {
     return _output = TextStyleHtml.root(
       state._wf.getDependencies(state.context),
       state.widget.textStyle,
-    ).copyWith(textAlign: textAlign);
+    ).copyWith(textAlign: state.widget.textAlign);
   }
 
   void reset() => _output = null;
