@@ -10,9 +10,9 @@ import 'package:flutter_widget_from_html_core/flutter_widget_from_html_core.dart
 import 'package:html/dom.dart' as dom;
 import 'package:html/parser.dart' as parser;
 
-import 'internal/builder.dart' as builder;
 import 'core_data.dart';
 import 'core_widget_factory.dart';
+import 'internal/builder.dart' as builder;
 import 'internal/tsh_widget.dart';
 
 /// A widget that builds Flutter widget tree from HTML
@@ -78,8 +78,7 @@ class HtmlWidget extends StatefulWidget {
   /// - `unsupportedWebViewWorkaroundForIssue37`
   /// - `webView`
   /// - `webViewJs`
-  RebuildTriggers get rebuildTriggers =>
-      RebuildTriggers([
+  RebuildTriggers get rebuildTriggers => RebuildTriggers([
         html,
         baseUrl,
         buildAsync,
@@ -97,7 +96,8 @@ class HtmlWidget extends StatefulWidget {
   /// Creates a widget that builds Flutter widget tree from html.
   ///
   /// The [html] argument must not be null.
-  HtmlWidget(this.html, {
+  HtmlWidget(
+    this.html, {
     this.baseUrl,
     this.buildAsync,
     this.buildAsyncBuilder,
@@ -111,9 +111,8 @@ class HtmlWidget extends StatefulWidget {
     this.onTapUrl,
     RebuildTriggers? rebuildTriggers,
     this.textStyle = const TextStyle(),
-    this.textAlign,
-  })
-      : _rebuildTriggers = rebuildTriggers,
+    this.textAlign = TextAlign.left,
+  })  : _rebuildTriggers = rebuildTriggers,
         super(key: key);
 
   @override
@@ -244,19 +243,17 @@ class _RootTsb extends TextStyleBuilder {
   void reset() => _output = null;
 }
 
-Widget _buildAsyncBuilder(BuildContext context,
-    AsyncSnapshot<Widget> snapshot) =>
+Widget _buildAsyncBuilder(
+        BuildContext context, AsyncSnapshot<Widget> snapshot) =>
     snapshot.data ??
-        Center(
-          child: Padding(
-            padding: EdgeInsets.all(8),
-            child: Theme
-                .of(context)
-                .platform == TargetPlatform.iOS
-                ? CupertinoActivityIndicator()
-                : CircularProgressIndicator(),
-          ),
-        );
+    Center(
+      child: Padding(
+        padding: EdgeInsets.all(8),
+        child: Theme.of(context).platform == TargetPlatform.iOS
+            ? CupertinoActivityIndicator()
+            : CircularProgressIndicator(),
+      ),
+    );
 
 Widget _buildBody(_HtmlWidgetState state, dom.NodeList domNodes) {
   final rootMeta = state._rootMeta;
@@ -269,17 +266,12 @@ Widget _buildBody(_HtmlWidgetState state, dom.NodeList domNodes) {
     parentMeta: rootMeta,
     tsb: rootMeta.tsb,
     wf: wf,
-  )
-    ..addBitsFromNodes(domNodes);
+  )..addBitsFromNodes(domNodes);
   return wf.buildBody(rootMeta, tree.build()) ?? widget0;
 }
 
-dom.NodeList _parseHtml(String html) =>
-    parser
-        .HtmlParser(
+dom.NodeList _parseHtml(String html) => parser.HtmlParser(
       html,
       generateSpans: false,
       parseMeta: false,
-    )
-        .parseFragment()
-        .nodes;
+    ).parseFragment().nodes;
