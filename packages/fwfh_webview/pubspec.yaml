@@ -10,7 +10,11 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  flutter_widget_from_html_core: ^0.6.0
+  flutter_widget_from_html_core:
+    git:
+      url: git://github.com/svoza10/flutter_widget_from_html.git
+      ref: master
+      path: packages/core
   webview_flutter: ^2.0.4
 
 dependency_overrides:
