@@ -1,154 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f1fba4f9-816a-4e47-99d8-b9063e09632d" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.codecov.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.codecov.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.devcontainer/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/.devcontainer/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.devcontainer/build.sh" beforeDir="false" afterPath="$PROJECT_DIR$/.devcontainer/build.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.github/workflows/android.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/android.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.github/workflows/api.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.github/workflows/demo_app.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/demo_app.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.github/workflows/flutter.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/flutter.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/iframe.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/now.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/package-lock.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/package.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo_app/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/demo_app/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo_app/ios/Runner.xcodeproj/project.pbxproj" beforeDir="false" afterPath="$PROJECT_DIR$/demo_app/ios/Runner.xcodeproj/project.pbxproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo_app/ios/Runner.xcodeproj/project.xcworkspace/contents.xcworkspacedata" beforeDir="false" afterPath="$PROJECT_DIR$/demo_app/ios/Runner.xcodeproj/project.xcworkspace/contents.xcworkspacedata" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo_app/lib/screens/font_size.dart" beforeDir="false" afterPath="$PROJECT_DIR$/demo_app/lib/screens/font_size.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo_app/lib/screens/golden.dart" beforeDir="false" afterPath="$PROJECT_DIR$/demo_app/lib/screens/golden.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo_app/lib/screens/hello_world_core.dart" beforeDir="false" afterPath="$PROJECT_DIR$/demo_app/lib/screens/hello_world_core.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo_app/lib/screens/home.dart" beforeDir="false" afterPath="$PROJECT_DIR$/demo_app/lib/screens/home.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo_app/lib/screens/iframe.dart" beforeDir="false" afterPath="$PROJECT_DIR$/demo_app/lib/screens/iframe.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo_app/lib/screens/iframe_twitter.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo_app/lib/screens/img.dart" beforeDir="false" afterPath="$PROJECT_DIR$/demo_app/lib/screens/img.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo_app/lib/screens/wordpress.dart" beforeDir="false" afterPath="$PROJECT_DIR$/demo_app/lib/screens/wordpress.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo_app/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/demo_app/pubspec.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo_app/test/golden_test.dart" beforeDir="false" afterPath="$PROJECT_DIR$/demo_app/test/golden_test.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo_app/test/goldens.json" beforeDir="false" afterPath="$PROJECT_DIR$/demo_app/test/goldens.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo_app/test/goldens/A.png" beforeDir="false" afterPath="$PROJECT_DIR$/demo_app/test/goldens/A.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo_app/test/goldens/HR.png" beforeDir="false" afterPath="$PROJECT_DIR$/demo_app/test/goldens/HR.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo_app/test/goldens/IFRAME.png" beforeDir="false" afterPath="$PROJECT_DIR$/demo_app/test/goldens/IFRAME.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo_app/test/goldens/SVG.png" beforeDir="false" afterPath="$PROJECT_DIR$/demo_app/test/goldens/SVG.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo_app/test/goldens/TABLE,CAPTION,TBODY,THEAD,TFOOT,TR,TH,TD.png" beforeDir="false" afterPath="$PROJECT_DIR$/demo_app/test/goldens/TABLE,CAPTION,TBODY,THEAD,TFOOT,TR,TH,TD.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo_app/test/goldens/VIDEO.png" beforeDir="false" afterPath="$PROJECT_DIR$/demo_app/test/goldens/VIDEO.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo_app/test/goldens/inline/border/border-bottom.png" beforeDir="false" afterPath="$PROJECT_DIR$/demo_app/test/goldens/inline/border/border-bottom.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo_app/test/goldens/inline/border/border-top.png" beforeDir="false" afterPath="$PROJECT_DIR$/demo_app/test/goldens/inline/border/border-top.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo_app/test/goldens/inline/border/dashed.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo_app/test/goldens/inline/border/dotted.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo_app/test/goldens/inline/border/double.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo_app/test/goldens/inline/border/solid.png" beforeDir="false" afterPath="$PROJECT_DIR$/demo_app/test/goldens/inline/border/solid.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo_app/test/goldens/inline/font-size.png" beforeDir="false" afterPath="$PROJECT_DIR$/demo_app/test/goldens/inline/font-size.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo_app/test/goldens/tag/TABLE/colspan.png" beforeDir="false" afterPath="$PROJECT_DIR$/demo_app/test/goldens/tag/TABLE/colspan.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo_app/test/goldens/tag/TABLE/rowspan.png" beforeDir="false" afterPath="$PROJECT_DIR$/demo_app/test/goldens/tag/TABLE/rowspan.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo_app/test/smilie_test.dart" beforeDir="false" afterPath="$PROJECT_DIR$/demo_app/test/smilie_test.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo_app/test_driver/_1.dart" beforeDir="false" afterPath="$PROJECT_DIR$/demo_app/test_driver/_1.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo_app/test_driver/_2.dart" beforeDir="false" afterPath="$PROJECT_DIR$/demo_app/test_driver/_2.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo_app/test_driver/video_player.dart" beforeDir="false" afterPath="$PROJECT_DIR$/demo_app/test_driver/video_player.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo_app/test_driver/web_view.dart" beforeDir="false" afterPath="$PROJECT_DIR$/demo_app/test_driver/web_view.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo_app/test_driver/web_view_test.dart" beforeDir="false" afterPath="$PROJECT_DIR$/demo_app/test_driver/web_view_test.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/core/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/core/CHANGELOG.md" beforeDir="false" afterPath="$PROJECT_DIR$/packages/core/CHANGELOG.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/core/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/packages/core/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/core/example/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/core/example/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/core/example/pubspec.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/core/lib/src/core_data.dart" beforeDir="false" afterPath="$PROJECT_DIR$/packages/core/lib/src/core_data.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/core/lib/src/core_helpers.dart" beforeDir="false" afterPath="$PROJECT_DIR$/packages/core/lib/src/core_helpers.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/core/lib/src/core_html_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/packages/core/lib/src/core_html_widget.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/core/lib/src/core_widget_factory.dart" beforeDir="false" afterPath="$PROJECT_DIR$/packages/core/lib/src/core_widget_factory.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/core/lib/src/data/build_bits.dart" beforeDir="false" afterPath="$PROJECT_DIR$/packages/core/lib/src/data/build_bits.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/core/lib/src/data/css.dart" beforeDir="false" afterPath="$PROJECT_DIR$/packages/core/lib/src/data/css.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/core/lib/src/data/image.dart" beforeDir="false" afterPath="$PROJECT_DIR$/packages/core/lib/src/data/image.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/core/lib/src/data/table.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/core/lib/src/data/text_style.dart" beforeDir="false" afterPath="$PROJECT_DIR$/packages/core/lib/src/data/text_style.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/core/lib/src/internal/builder.dart" beforeDir="false" afterPath="$PROJECT_DIR$/packages/core/lib/src/internal/builder.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/core/lib/src/internal/core_ops.dart" beforeDir="false" afterPath="$PROJECT_DIR$/packages/core/lib/src/internal/core_ops.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/core/lib/src/internal/core_parser.dart" beforeDir="false" afterPath="$PROJECT_DIR$/packages/core/lib/src/internal/core_parser.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/core/lib/src/internal/flattener.dart" beforeDir="false" afterPath="$PROJECT_DIR$/packages/core/lib/src/internal/flattener.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/core/lib/src/internal/margin_vertical.dart" beforeDir="false" afterPath="$PROJECT_DIR$/packages/core/lib/src/internal/margin_vertical.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/core/lib/src/internal/ops/column.dart" beforeDir="false" afterPath="$PROJECT_DIR$/packages/core/lib/src/internal/ops/column.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/core/lib/src/internal/ops/style_bg_color.dart" beforeDir="false" afterPath="$PROJECT_DIR$/packages/core/lib/src/internal/ops/style_bg_color.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/core/lib/src/internal/ops/style_margin.dart" beforeDir="false" afterPath="$PROJECT_DIR$/packages/core/lib/src/internal/ops/style_margin.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/core/lib/src/internal/ops/style_padding.dart" beforeDir="false" afterPath="$PROJECT_DIR$/packages/core/lib/src/internal/ops/style_padding.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/core/lib/src/internal/ops/style_sizing.dart" beforeDir="false" afterPath="$PROJECT_DIR$/packages/core/lib/src/internal/ops/style_sizing.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/core/lib/src/internal/ops/style_text_align.dart" beforeDir="false" afterPath="$PROJECT_DIR$/packages/core/lib/src/internal/ops/style_text_align.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/core/lib/src/internal/ops/style_vertical_align.dart" beforeDir="false" afterPath="$PROJECT_DIR$/packages/core/lib/src/internal/ops/style_vertical_align.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/core/lib/src/internal/ops/tag_a.dart" beforeDir="false" afterPath="$PROJECT_DIR$/packages/core/lib/src/internal/ops/tag_a.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/core/lib/src/internal/ops/tag_img.dart" beforeDir="false" afterPath="$PROJECT_DIR$/packages/core/lib/src/internal/ops/tag_img.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/core/lib/src/internal/ops/tag_li.dart" beforeDir="false" afterPath="$PROJECT_DIR$/packages/core/lib/src/internal/ops/tag_li.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/core/lib/src/internal/ops/tag_q.dart" beforeDir="false" afterPath="$PROJECT_DIR$/packages/core/lib/src/internal/ops/tag_q.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/core/lib/src/internal/ops/tag_ruby.dart" beforeDir="false" afterPath="$PROJECT_DIR$/packages/core/lib/src/internal/ops/tag_ruby.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/core/lib/src/internal/ops/tag_table.dart" beforeDir="false" afterPath="$PROJECT_DIR$/packages/core/lib/src/internal/ops/tag_table.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/core/lib/src/internal/ops/text_style.dart" beforeDir="false" afterPath="$PROJECT_DIR$/packages/core/lib/src/internal/ops/text_style.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/core/lib/src/internal/parser/border.dart" beforeDir="false" afterPath="$PROJECT_DIR$/packages/core/lib/src/internal/parser/border.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/core/lib/src/internal/parser/color.dart" beforeDir="false" afterPath="$PROJECT_DIR$/packages/core/lib/src/internal/parser/color.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/core/lib/src/internal/parser/length.dart" beforeDir="false" afterPath="$PROJECT_DIR$/packages/core/lib/src/internal/parser/length.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/core/lib/src/internal/tsh_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/packages/core/lib/src/internal/tsh_widget.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/core/lib/src/widgets/css_sizing.dart" beforeDir="false" afterPath="$PROJECT_DIR$/packages/core/lib/src/widgets/css_sizing.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/core/lib/src/widgets/html_ruby.dart" beforeDir="false" afterPath="$PROJECT_DIR$/packages/core/lib/src/widgets/html_ruby.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/core/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/packages/core/pubspec.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/core/test/_.dart" beforeDir="false" afterPath="$PROJECT_DIR$/packages/core/test/_.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/core/test/core_config_test.dart" beforeDir="false" afterPath="$PROJECT_DIR$/packages/core/test/core_config_test.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/core/test/core_test.dart" beforeDir="false" afterPath="$PROJECT_DIR$/packages/core/test/core_test.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/core/test/src/core_data_test.dart" beforeDir="false" afterPath="$PROJECT_DIR$/packages/core/test/src/core_data_test.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/core/test/src/data/build_bits_test.dart" beforeDir="false" afterPath="$PROJECT_DIR$/packages/core/test/src/data/build_bits_test.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/core/test/src/data/table_test.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/core/test/style_sizing_test.dart" beforeDir="false" afterPath="$PROJECT_DIR$/packages/core/test/style_sizing_test.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/core/test/style_verticalAlign_test.dart" beforeDir="false" afterPath="$PROJECT_DIR$/packages/core/test/style_verticalAlign_test.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/core/test/tag_a_core_test.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/core/test/tag_img_core_test.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/core/test/tag_li_test.dart" beforeDir="false" afterPath="$PROJECT_DIR$/packages/core/test/tag_li_test.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/core/test/tag_q_test.dart" beforeDir="false" afterPath="$PROJECT_DIR$/packages/core/test/tag_q_test.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/core/test/tag_ruby_test.dart" beforeDir="false" afterPath="$PROJECT_DIR$/packages/core/test/tag_ruby_test.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/core/test/tag_table_core_test.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/enhanced/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/enhanced/CHANGELOG.md" beforeDir="false" afterPath="$PROJECT_DIR$/packages/enhanced/CHANGELOG.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/enhanced/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/packages/enhanced/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/enhanced/example/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/enhanced/example/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/enhanced/example/pubspec.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/enhanced/lib/src/external/url_launcher.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/enhanced/lib/src/helpers.dart" beforeDir="false" afterPath="$PROJECT_DIR$/packages/enhanced/lib/src/helpers.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/enhanced/lib/src/html_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/packages/enhanced/lib/src/html_widget.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/enhanced/lib/src/internal/layout_grid.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/enhanced/lib/src/internal/ops.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/enhanced/lib/src/internal/ops/tag_video.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/enhanced/lib/src/widget_factory.dart" beforeDir="false" afterPath="$PROJECT_DIR$/packages/enhanced/lib/src/widget_factory.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/enhanced/lib/src/widgets/video_player.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/enhanced/lib/src/widgets/web_view.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/enhanced/lib/src/widgets/web_view/fallback.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/enhanced/lib/src/widgets/web_view/io.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/enhanced/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/packages/enhanced/pubspec.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/enhanced/test/_.dart" beforeDir="false" afterPath="$PROJECT_DIR$/packages/enhanced/test/_.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/enhanced/test/anchor_test.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/enhanced/test/config_test.dart" beforeDir="false" afterPath="$PROJECT_DIR$/packages/enhanced/test/config_test.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/enhanced/test/images/logo.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/enhanced/test/issue_23_test.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/enhanced/test/tag_a_test.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/enhanced/test/tag_iframe_test.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/enhanced/test/tag_img_test.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/enhanced/test/tag_svg_test.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/enhanced/test/tag_table_test.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/enhanced/test/tag_video_test.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/enhanced/test/widget_from_html_test.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tool/integration.sh" beforeDir="false" afterPath="$PROJECT_DIR$/tool/integration.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tool/pub-get.sh" beforeDir="false" afterPath="$PROJECT_DIR$/tool/pub-get.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tool/sylph/sylph.sh" beforeDir="false" afterPath="$PROJECT_DIR$/tool/sylph/sylph.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tool/test.sh" beforeDir="false" afterPath="$PROJECT_DIR$/tool/test.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tool/update-goldens.sh" beforeDir="false" afterPath="$PROJECT_DIR$/tool/update-goldens.sh" afterDir="false" />
-    </list>
+    <list default="true" id="f1fba4f9-816a-4e47-99d8-b9063e09632d" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="null_safety" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1r4HfPTXnVq8FxHiPoTT56ntard" />
@@ -177,6 +41,47 @@
       <option name="presentableId" value="Default" />
       <updated>1618228544620</updated>
     </task>
+    <task id="LOCAL-00001" summary="merge">
+      <created>1619599341750</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1619599341750</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="merge" />
+    <option name="LAST_COMMIT_MESSAGE" value="merge" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="587" y="87" width="952" height="865" key="CommitChangelistDialog2" timestamp="1619599340292">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="587" y="87" width="952" height="865" key="CommitChangelistDialog2/1920.0.1536.832/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1619599340292" />
+    <state x="92" y="92" width="1736" height="856" key="DiffContextDialog" timestamp="1619599513901">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="92" y="92" width="1736" height="856" key="DiffContextDialog/1920.0.1536.832/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1619599513901" />
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1619599351362">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2/1920.0.1536.832/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1619599351362" />
+    <state x="475" y="145" width="585" height="534" key="find.popup" timestamp="1619599264998">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="475" y="145" width="585" height="534" key="find.popup/1920.0.1536.832/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1619599264998" />
   </component>
 </project>

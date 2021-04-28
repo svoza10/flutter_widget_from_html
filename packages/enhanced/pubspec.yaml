@@ -10,7 +10,12 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  flutter_widget_from_html_core: ^0.6.0
+  #https://pub.dev/packages/flutter_widget_from_html
+  flutter_widget_from_html_core:
+    git:
+      url: git://github.com/svoza10/flutter_widget_from_html.git
+      ref: master
+      path: packages/core
   fwfh_cached_network_image: ^0.6.0
   fwfh_chewie: ^0.6.0
   fwfh_svg: ^0.6.0
