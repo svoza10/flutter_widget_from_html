@@ -20,7 +20,11 @@ dependencies:
   fwfh_chewie: ^0.6.0
   fwfh_svg: ^0.6.0
   fwfh_url_launcher: ^0.6.0
-  fwfh_webview: ^0.6.0
+  fwfh_webview:
+    git:
+      url: git://github.com/svoza10/flutter_widget_from_html.git
+      ref: master
+      path: packages/fwfh_webview
   html: ^0.15.0
 
 dependency_overrides:
